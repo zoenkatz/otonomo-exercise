@@ -1,0 +1,36 @@
+.checkbox-label {
+  font-size: 1em;
+  position: relative;
+  cursor: pointer;
+}
+
+.label {
+  display: block;
+  padding-left: 2em;
+  padding-top: .3em;
+}
+
+.checkbox {
+  float: left;
+  position: absolute;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+
+  &::after {
+    border: solid 1px #ababab;
+    opacity: 1;
+    visibility: visible;
+    display: inline-block;
+    width: 17px;
+    height: 20px;
+    padding-left: 3px;
+    content: '';
+
+  }
+
+  &:checked::after {
+    content: '\2713';
+    font-size: 1.5em;
+  }
+}

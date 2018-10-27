@@ -5,13 +5,15 @@ export default function createStreamerFrom(generator, range) {
   return new Streamer(generator, range)
 }
 
+const DEFAULT_TIME_RANGE_IN_MS = [1000, 5000]
+
 class Streamer {
   generator
   timeRange
   isStreaming = false
   handlers = []
 
-  constructor(dataGenerator, timeRange = [1000, 5000]) {
+  constructor(dataGenerator, timeRange = DEFAULT_TIME_RANGE_IN_MS) {
     if (!isFunction(dataGenerator)) {
       throw new Error('Streamer: Data generator must be a factory function')
     }
@@ -39,7 +41,7 @@ class Streamer {
     }, timeout)
   }
 
-  listen(handler) {
+  subscribe(handler) {
     this.handlers.push(handler)
   }
 

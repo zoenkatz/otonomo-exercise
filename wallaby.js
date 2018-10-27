@@ -13,7 +13,11 @@ module.exports = function(wallaby) {
   process.env.NODE_ENV = 'development'
 
   return {
-    files: ['src/**/*.js', '!src/**/*.test.js'],
+    files: [
+      'src/**/*.js',
+      '!src/**/*.test.js',
+      { pattern: 'src/test-utils/**/*.js', instrument: false },
+    ],
 
     tests: ['src/**/*.test.js'],
 

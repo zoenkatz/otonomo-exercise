@@ -18,7 +18,7 @@ describe('Data streamer', () => {
   it('should provide stream data within time limit', function(done) {
     const d = new Date().getTime()
 
-    dataStreamer.listen(data => {
+    dataStreamer.subscribe(data => {
       const timeDiff = new Date().getTime() - d
       console.log(timeDiff)
       expect(timeDiff).toBeGreaterThanOrEqual(200)
@@ -29,7 +29,7 @@ describe('Data streamer', () => {
 
   it('should be called until stopped', function(done) {
     let counter = 0
-    dataStreamer.listen(() => {
+    dataStreamer.subscribe(() => {
       counter++
       if (counter >= 3) {
         dataStreamer.stop()

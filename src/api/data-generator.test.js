@@ -31,7 +31,6 @@ describe('Data Generator', () => {
   })
 
   it('Should have the provided vin', () => {
-    console.log(carData)
     expect(carData.vin).toEqual(VIN)
   })
 })

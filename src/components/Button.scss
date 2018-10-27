@@ -1,0 +1,18 @@
+$btn-color: #3ba2ff;
+.button {
+  background-color: $btn-color;
+  border: none;
+  padding: .5em 1em;
+  font-size: 1rem;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($btn-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($btn-color, 10%);
+  }
+}

@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.streamer.listen(this.updateState)
+    this.streamer.subscribe(this.updateState)
     this.streamer.start()
   }
 
