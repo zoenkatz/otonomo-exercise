@@ -16,6 +16,8 @@ The basic idea is pretty simple:
 - [ ] Users can turn off events from specific VINs
 - [ ] Users can filter events by fuel level, displaying only events in which the fuel level is below 15%
 
+This is how it should look like (roughly):
+![mockup](https://raw.githubusercontent.com/naoric/otonomo-exercise/master/otonomo-web-preview.png)
 
 ## Subscribing to events
 We are using a `Streamer` instance to mock car events, nothing too fancy, just a class that receives a factory function and emit its output once in a while.
@@ -62,12 +64,12 @@ Some of the required components has already been added for you:
 - `Button`
 - `Checkbox`
 - `Input`
-- `EventNotification` - this is a styled box that contains car events
+- `EventNotification` - this is a styled box that contains a car event
 
 You can play with the components by running `npm run storybook`
 
 ## App Mockup 
-We really recommend you to focus on the app functionality rather than styling. After everything is working, it'd be great if you can add some styling (just a 
+We really recommend you to focus on the app functionality rather than styling. After everything is working, it'd be great if you can add some styling (just a bonus)
 
 That's it, it should take no more than an hour or two, good luck!
 
