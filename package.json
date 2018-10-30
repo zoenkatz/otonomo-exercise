@@ -28,19 +28,20 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.0-rc.6",
-    "@storybook/addon-links": "^4.0.0-rc.6",
-    "@storybook/addons": "^4.0.0-rc.6",
-    "@storybook/react": "^4.0.0-rc.6",
+    "@storybook/addon-actions": "^4.0.0",
+    "@storybook/addon-knobs": "^4.0.0",
+    "@storybook/addon-links": "^4.0.0",
+    "@storybook/addons": "^4.0.0",
+    "@storybook/react": "^4.0.0",
     "@types/jest": "^23.3.7",
     "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
     "babel-runtime": "^7.0.0-beta.3",
     "faker": "^4.1.0",
     "husky": "^1.1.2",
     "joi": "^14.0.1",
     "node-sass": "^4.9.4",
-    "pretty-quick": "^1.8.0",
-    "babel-loader": "^8.0.4"
+    "pretty-quick": "^1.8.0"
   },
   "husky": {
     "hooks": {

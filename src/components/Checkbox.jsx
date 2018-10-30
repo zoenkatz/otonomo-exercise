@@ -1,12 +1,10 @@
 import React from 'react'
-import cn from 'classnames'
-
 import './Checkbox.scss'
 
-function Checkbox({ className, type, children, ...props }) {
+function Checkbox({ type, children, ...props }) {
   return (
     <label className="checkbox-label">
-      <input type="checkbox" {...props} className={cn(className, 'checkbox')} />
+      <input type="checkbox" {...props} />
       <span className="label">{children}</span>
     </label>
   )
