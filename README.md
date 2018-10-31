@@ -1,14 +1,15 @@
 # Otonomo Exercise
 Welcome to Otonomo, this repo contains a boilerplate for a short front end exercise.
 
-In order to save some time, we have already initiated a repo with `create-react-app` and several basic components to help you start quickly. 
+In order to save some time, we have already initiated this repo with `create-react-app` and several basic components. 
 
-You can start by forking this repo.
+## Instruction
+You can start by forking this repo, complete the exercise and send us the a link to the forked repo.
 
 ## App Specification
 Otonomo is collecting real-time car data, for example, fuel level, wiper fluid level, geolocation, etc.
 
-In this exercise you should develop a tiny web app that allows users to subscribe to vehicle events, and display them in real time. Users should also be able to filter those events based on VIN (Vehicle Identification Number - basically car ID) and fuel level - in some cases users would like to know if the car fuel level is below certain threshold (for this exercise it will always be **15%**). 
+In this exercise you should develop a tiny web app through which users can subscribe to vehicle events and display them in real time. Users should also be able to filter those events based on VIN (Vehicle Identification Number - basically car ID) and fuel level - in some cases users would like to know if the car fuel level is below certain threshold (for this exercise it will always be **15%**). 
 
 The basic idea is pretty simple:
 - [ ] Users can subscribe to VIN, be entering the VIN and then add it to the watch list
