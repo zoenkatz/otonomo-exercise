@@ -11,7 +11,7 @@ Otonomo is collecting real-time car data, for example, fuel level, wiper fluid l
 
 In this exercise you should develop a tiny web app through which users can subscribe to vehicle events and display them in real time. Users should also be able to filter those events based on VIN (Vehicle Identification Number - basically car ID) and fuel level - in some cases users would like to know if the car fuel level is below certain threshold (for this exercise it will always be **15%**). 
 
-The basic idea is pretty simple:
+The basic idea is fairly simple:
 - [ ] Users can subscribe to VIN by entering the VIN and adding it to the watch list
 - [ ] Events from those vehicles should be displayed in the main  screen
 - [ ] Users can turn off events from specific VINs
