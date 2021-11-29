@@ -1,7 +1,9 @@
 import React from 'react'
 import './Checkbox.scss'
 
-function Checkbox({ type, children, ...props }) {
+interface CheckboxProps extends React.PropsWithChildren<any> {}
+
+function Checkbox({ children, ...props }: CheckboxProps) {
   return (
     <label className="checkbox-label">
       <input type="checkbox" {...props} />

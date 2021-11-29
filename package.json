@@ -1,51 +1,65 @@
 {
   "name": "otonomo-api-tester",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "license": "NONE",
   "dependencies": {
     "classnames": "^2.2.6",
-    "lodash": "^4.17.13",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "faker": "^5.1.0",
+    "lodash": "^4.17.20",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "start-storybook -p 9009 -s public"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.0",
-    "@storybook/addon-knobs": "^4.0.0",
-    "@storybook/addon-links": "^4.0.0",
-    "@storybook/addons": "^4.0.0",
-    "@storybook/react": "^4.0.0",
-    "@types/jest": "^23.3.7",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-loader": "^8.0.4",
-    "babel-runtime": "^7.0.0-beta.3",
-    "faker": "^4.1.0",
-    "husky": "^1.1.2",
+    "@storybook/addon-actions": "^6.4.0",
+    "@storybook/addon-knobs": "^6.4.0",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/addons": "^6.4.0",
+    "@storybook/builder-webpack5": "^6.4.0",
+    "@storybook/manager-webpack5": "^6.4.0",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.4.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/classnames": "^2.2.11",
+    "@types/faker": "^5.1.4",
+    "@types/jest": "^26.0.15",
+    "@types/joi": "^14.3.4",
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "eslint": "^7.14.0",
     "joi": "^14.0.1",
-    "node-sass": "^4.9.4",
-    "pretty-quick": "^1.8.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "react-scripts": "^4.0.3",
+    "sass": "^1.43.5",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.0.3"
   }
 }

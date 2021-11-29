@@ -19,7 +19,7 @@ storiesOf('Welcome', module).add('to Storybook', () => (
 ))
 
 storiesOf('Button', module).add('Normal button', () => (
-  <Button onClick={action('Button clicked')}>This is a button</Button>
+  <Button className="btn" onClick={action('Button clicked')}>This is a button</Button>
 ))
 
 storiesOf('Checkbox', module).add('Normal Checkbox', () => (
@@ -27,14 +27,6 @@ storiesOf('Checkbox', module).add('Normal Checkbox', () => (
 ))
 
 storiesOf('Input', module).add('Normal Input', () => <Input />)
-
-// return {
-//   vin,
-//   timestamp: timestamp(),
-//   fuel: fuelLevel(),
-//   wiperFluid: wiperFluid(),
-//   location: location(),
-// }
 
 const percentageKnobConfig = {
   min: 0,

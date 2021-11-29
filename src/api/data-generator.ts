@@ -1,5 +1,18 @@
 import faker from 'faker'
-export default function generateCarData(vin) {
+
+export interface CarData {
+  vin: string
+  timestamp: any
+  fuel: number
+  wiperFluid: number
+  location: {
+    lat: number
+    lng: number
+  }
+
+}
+
+export default function generateCarData(vin: string): CarData {
   return {
     vin,
     timestamp: timestamp(),
@@ -31,9 +44,8 @@ function location() {
 function coordinate() {
   return faker.random
     .number({ min: 0, max: 25, precision: 0.000000001 })
-    .toFixed(9)
 }
 
 function percentage() {
-  return faker.random.number({ min: 0, max: 1, precision: 0.01 }).toFixed(2)
+  return faker.random.number({ min: 0, max: 1, precision: 0.01 })
 }
