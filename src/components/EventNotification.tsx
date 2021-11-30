@@ -1,11 +1,17 @@
-import React from 'react'
 import './EventNotification.scss'
+import React from 'react'
 import LevelBar from './LevelBar'
 
-export default function EventNotification({
+import type { CarData } from '../api/data-generator'
+interface EventNotificationProps {
+  carEvent: CarData
+  color?: string
+}
+
+const EventNotification = ({
   carEvent: { vin, timestamp, fuel, wiperFluid, location },
   color = '#00c3e8',
-}) {
+}: EventNotificationProps) => {
   return (
     <article className="car-event">
       <section className="car-event__vin" style={{ backgroundColor: color }}>
@@ -37,3 +43,5 @@ export default function EventNotification({
     </article>
   )
 }
+
+export default EventNotification

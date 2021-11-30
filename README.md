@@ -7,9 +7,11 @@ In order to save some time, we have already initiated this repo with `create-rea
 You can start by forking this repo, complete the exercise and send us the a link to the forked repo.
 
 ## App Specification
-Otonomo is collecting real-time car data, for example, fuel level, wiper fluid level, geolocation, etc.
+Otonomo collects real-time car data, for example: fuel level, wiper fluid level, geolocation, etc.
 
-In this exercise you should develop a tiny web app through which users can subscribe to vehicle events and display them in real time. Users should also be able to filter those events based on VIN (Vehicle Identification Number - basically car ID) and fuel level - in some cases users would like to know if the car fuel level is below certain threshold (for this exercise it will always be **15%**). 
+In this exercise you should develop a tiny web app through which users can subscribe to vehicle events and display them in real time. Users should also be able to filter those events based on:
+* VIN (Vehicle Identification Number - basically car ID) and,
+* fuel level - in some cases users would like to know if the car fuel level is below certain threshold (for this exercise it will always be **15%**). 
 
 The basic idea is fairly simple:
 - [ ] Users can subscribe to VIN by entering the VIN and adding it to the watch list
@@ -18,13 +20,13 @@ The basic idea is fairly simple:
 - [ ] Users can filter events by fuel level, displaying only events in which the fuel level is below 15%
 
 This is how it should look like (roughly):
-![mockup](https://raw.githubusercontent.com/naoric/otonomo-exercise/master/otonomo-web-preview.png)
+![mockup](https://raw.githubusercontent.com/otonomo/otonomo-exercise/master/otonomo-web-preview.png)
 
 ## Subscribing to events
 We are using a `Streamer` instance to mock car events, nothing too fancy, just a class that receives a factory function and emits its output once in a while.
 
 You can initiate such `Streamer` by importing `createCarStreamer` function from `car-data-streamer`, it receives a `VIN` (17 uppercase alphanumeric characters) and returns a streamer, like so:
-```
+```typescript
 import createCarStreamer from './api/car-data-streamer'
 
 const carStreamer = createCarStreamer('IFJRU974JFI100JC')
@@ -34,15 +36,15 @@ carStreamer.start()
 	
 ### Streamer.subscribe(handler)
 This is how you subscribe to car events:
-```
+```typescript
 carStreamer.subscribe(carData => {
 	// do something with car data
 })
 ```
 
 `carData` structure:
-```
- return {
+```json
+ {
     vin, // the vin you entered
     timestamp: 43904830948, // event timestamp
     fuel: 0.23, // fuel level (max is 1)
@@ -61,7 +63,7 @@ You guessed it, will pause events emitting :)
 Unsubscribe from car events
 
 ## Utility Components
-Some of the required components has already been added for you:
+Some of the required components have already been added for you:
 - `Button`
 - `Checkbox`
 - `Input`
@@ -70,7 +72,7 @@ Some of the required components has already been added for you:
 You can play with the components by running `npm run storybook`
 
 ## App Mockup 
-We really recommend you to focus on the app functionality rather than styling. After everything is working, it'd be great if you can make it look better (as a bonus)
+We really recommend you to focus on the app functionality rather than styling. After everything is working, it'd be great if you can make it look better (as a bonus).
 
-That's it, it should take no more than an hour or two, good luck!
+Good luck!
 

@@ -1,24 +1,24 @@
 import faker from 'faker'
 import isFunction from 'lodash/fp/isFunction'
+import type {CarData} from './data-generator'
 
-export default function createStreamerFrom(generator, range) {
+type Generator = () => CarData
+type Handler = (carData: CarData) => unknown
+
+export default function createStreamerFrom(generator: Generator, range = DEFAULT_TIME_RANGE_IN_MS) {
   return new Streamer(generator, range)
 }
 
 const DEFAULT_TIME_RANGE_IN_MS = [1000, 5000]
 
 class Streamer {
-  generator
-  timeRange
-  isStreaming = false
-  handlers = []
+  private isStreaming = false
+  private handlers: Handler[] = []
 
-  constructor(dataGenerator, timeRange = DEFAULT_TIME_RANGE_IN_MS) {
-    if (!isFunction(dataGenerator)) {
+  constructor(private readonly generator: Generator, private readonly timeRange = DEFAULT_TIME_RANGE_IN_MS) {
+    if (!isFunction(generator)) {
       throw new Error('Streamer: Data generator must be a factory function')
     }
-    this.generator = dataGenerator
-    this.timeRange = timeRange
   }
 
   start() {
@@ -41,11 +41,11 @@ class Streamer {
     }, timeout)
   }
 
-  subscribe(handler) {
+  subscribe(handler: Handler) {
     this.handlers.push(handler)
   }
 
-  removeHandler(handler) {
+  removeHandler(handler: Handler) {
     this.handlers = this.handlers.filter(h => h !== handler)
   }
 

@@ -1,7 +1,11 @@
-import React from 'react'
 import './LevelBar.scss'
 
-export default function LevelBar({ width, fraction }) {
+interface LevelBarProps {
+  width: number
+  fraction: number
+}
+
+export default function LevelBar({ width, fraction }: LevelBarProps) {
   return (
     <div className="level-bar" style={{ maxWidth: width }}>
       <div

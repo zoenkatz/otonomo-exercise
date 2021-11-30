@@ -1,4 +1,5 @@
 import generateCarData from './data-generator'
+import type { CarData } from './data-generator'
 import Joi from 'joi'
 
 const carDataSchema = Joi.object().keys({
@@ -23,7 +24,7 @@ const carDataSchema = Joi.object().keys({
 const VIN = 'ABCDEF123456EVGI8'
 
 describe('Data Generator', () => {
-  let carData
+  let carData: CarData
   beforeEach(() => (carData = generateCarData(VIN)))
 
   it('Should match the correct schema', () => {
