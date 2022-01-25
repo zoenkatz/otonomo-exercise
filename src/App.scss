@@ -1,0 +1,69 @@
+html, body, #root{
+  height: 100%;
+}
+
+.vin-app
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+
+  .vin-add-select{
+    flex: 1;
+    border-right: 1px solid black;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .vin-events{
+    flex: 1;
+    padding: 20px;
+
+    .vin-events-filter-fuel{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: 1px solid;
+      padding: 20px;
+    }
+
+    .vin-events-chosen{
+      padding: 20px;
+
+      .vin-event{
+        padding: 5px;
+
+        .vin-event-title{
+          height: 30px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          text-align: center;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .vin-event-detail{
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          margin: 10px;
+
+          .level-bar{
+            width: 100%;
+            height: 20px;
+            border: 1px solid;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
