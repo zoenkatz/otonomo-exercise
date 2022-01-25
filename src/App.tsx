@@ -1,15 +1,14 @@
 import './App.scss'
 import React, { useMemo, useState, useEffect, useCallback } from 'react';
-import LazyLoad from 'react-lazyload';
 import generateCarData from './api/data-generator';
 import createStreamerFrom from './api/streamer'
 import type { CarData } from "./api/data-generator";
 import Input from "./components/Input";
 import Button from './components/Button';
 import Checkbox from './components/Checkbox';
-import LevelBar from './components/LevelBar'
 import VinEvent from './components/VinEvent'
-import AddedVin from './components/AddedVin'
+import AddedVin from './components/AddedVin';
+import {getRandomColor} from "./Utils/UtilsFunctions";
 
 export interface CarDataCheck {
   vin: string
@@ -39,6 +38,7 @@ const App = () => {
   const [addedVin, setAddedVin] = useState("");
   const [addedVins, setAddedVins] = useState<Array<CarDataCheck>>([]);
   const [vinsStreamerEvents, setVinStreamerEvents] = useState<Array<CarData>>([]);
+    const [streamersCache, setStreamersCache] = useState<Array<any>>([]);
   const streamer = useCallback((vin) => {
       return createStreamerFrom(() => generateCarData(vin))}, []);
 
@@ -49,27 +49,38 @@ const App = () => {
     }
   }, [carData])
 
+  useEffect(() => {
+
+    return () => {
+      streamersCache.forEach(streamerItem => {
+        streamerItem.streamer.stop();
+        streamerItem.streamer.removeHandler(setCarData);
+      })
+    }
+  }, [])
+
 
   const handleCheckingVin = useCallback(async (e, index) => {
     const changedVin = {...addedVins[index], isChecked: e.target.checked};
-    if(e.target.checked){
+    const foundStreamer = streamersCache.find(stream => stream.vin === changedVin.vin);
+    if(e.target.checked &&  !foundStreamer){
       const newStreamer = await streamer(changedVin.vin);
       newStreamer.subscribe(setCarData);
       newStreamer.start();
+      setStreamersCache([...streamersCache, {streamer: newStreamer, vin: changedVin.vin}]);
+    }
+    else if(e.target.checked){
+      foundStreamer.streamer.start();
+    }
+    else{
+      foundStreamer.streamer.stop();
     }
     setAddedVins([...addedVins.slice(0, index), changedVin ,...addedVins.slice(index +1)] )
-  }, [addedVins, streamer]);
+  }, [addedVins, streamer, streamersCache, streamersCache]);
 
   const [isFilteredFuel, setIsFilteredFuel] = useState(false);
 
-  const getRandomColor = useCallback(() => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }, []);
+
 
   const handleAddingVin = useCallback(() => {
    const newVin = {
@@ -91,10 +102,10 @@ const App = () => {
 
   const filteredVinsStreamerEvents = useMemo(() => {
     if(isFilteredFuel){
-      return vinsStreamerEvents.filter(streamEvent => streamEvent.fuel < 0.15 && addedVins.find(addedVin => addedVin.vin === streamEvent.vin && addedVin.isChecked));
+      return vinsStreamerEvents.filter(streamEvent => streamEvent.fuel < 0.15);
     }
-    return vinsStreamerEvents.filter(streamEvent => addedVins.find(addedVin => addedVin.vin === streamEvent.vin && addedVin.isChecked));
-  }, [isFilteredFuel, vinsStreamerEvents, addedVins]);
+    return vinsStreamerEvents;
+  }, [isFilteredFuel, vinsStreamerEvents]);
 
 
   return (
